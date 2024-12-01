@@ -49,6 +49,7 @@ export default function Page() {
           src="/about-2.jpg"
           fill
           className="object-cover"
+          sizes="(min-width: 1024px) 50vw, 100vw"
           alt="Family that manages The Wild Oasis"
         />
       </div>
