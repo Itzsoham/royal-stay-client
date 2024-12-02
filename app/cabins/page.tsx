@@ -2,12 +2,18 @@ import { Suspense } from "react";
 import CabinList from "../_components/CabinList";
 import Spinner from "../_components/Spinner";
 
+export const revalidate = 60 * 60; // revalidate every hour
+
 export const metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
-  // CHANGE
+export default function Page({
+  searchParams,
+}: {
+  searchParams: URLSearchParams;
+}) {
+  const filter = searchParams.get("capacity") || "all";
 
   return (
     <div>
