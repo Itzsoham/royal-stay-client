@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export type CabinType = {
-  id: string | number;
+  id: number;
   name: string;
   maxCapacity: number;
   regularPrice: number;
