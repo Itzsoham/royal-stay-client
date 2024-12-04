@@ -6,12 +6,12 @@ import { notFound } from "next/navigation";
 // GET
 
 export type GuestType = {
-  id: number;
-  email: string;
-  name: string;
-  country: string;
-  phone: string;
-  image: string;
+  id?: number;
+  email?: string | null;
+  fullName?: string | null;
+  country?: string;
+  phone?: string;
+  image?: string;
 };
 
 export type BookingType = {
@@ -73,7 +73,7 @@ export const getCabins = async function () {
 };
 
 // Guests are uniquely identified by their email address
-export async function getGuest(email: string) {
+export async function getGuest(email: string | undefined | null) {
   const { data } = await supabase
     .from("guests")
     .select("*")
