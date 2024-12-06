@@ -12,6 +12,9 @@ export type GuestType = {
   country?: string;
   phone?: string;
   image?: string;
+  nationalID?: string;
+  nationality?: string;
+  countryFlag?: string;
 };
 
 export type BookingType = {
@@ -204,7 +207,10 @@ export async function createBooking(newBooking: BookingType) {
 // UPDATE
 
 // The updatedFields is an object which should ONLY contain the updated data
-export async function updateGuest(id: number, updatedFields: GuestType) {
+export async function updateGuest(
+  id: number | undefined,
+  updatedFields: GuestType
+) {
   const { data, error } = await supabase
     .from("guests")
     .update(updatedFields)
