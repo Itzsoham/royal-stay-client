@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ReactNode } from "react";
 import { GuestType } from "@/app/_lib/data-service";
 import { updateProfileAction } from "@/app/_lib/actions";
+import SubmitButton from "./SubmitButton";
 
 export default function UpdateProfileForm({
   children,
@@ -43,8 +44,8 @@ export default function UpdateProfileForm({
               src={guest?.countryFlag ?? ""}
               alt="Country flag"
               width={30}
-              height={30}
-              className="h-5 rounded-sm"
+              height={20}
+              className=" rounded-sm"
             />
           </div>
 
@@ -61,9 +62,9 @@ export default function UpdateProfileForm({
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
+          <SubmitButton pendingText="Updating profile">
             Update profile
-          </button>
+          </SubmitButton>
         </div>
       </form>
     </div>

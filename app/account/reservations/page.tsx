@@ -1,14 +1,17 @@
-import ReservationCard, {
-  BookingType,
-} from "@/app/_components/ReservationCard";
+import ReservationList from "@/app/_components/ReservationList";
+import { auth } from "@/app/_lib/auth";
+import { BookingType, getBookings } from "@/app/_lib/data-service";
 
 export const metadata = {
   title: "Your reservations",
 };
 
-export default function Page() {
-  // CHANGE
-  const bookings: BookingType[] = [];
+export default async function Page() {
+  const session = await auth();
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const bookings: BookingType[] = await getBookings(
+    session?.user?.guestId as number
+  );
 
   return (
     <div>
@@ -24,11 +27,7 @@ export default function Page() {
           </a>
         </p>
       ) : (
-        <ul className="space-y-6">
-          {bookings.map((booking) => (
-            <ReservationCard booking={booking} key={booking.id} />
-          ))}
-        </ul>
+        <ReservationList bookings={bookings} />
       )}
     </div>
   );
