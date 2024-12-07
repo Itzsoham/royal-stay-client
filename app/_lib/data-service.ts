@@ -17,21 +17,25 @@ export type GuestType = {
   countryFlag?: string;
 };
 
-export type BookingType = {
-  id: number;
-  created_at: string;
-  startDate: string;
-  endDate: string;
-  numNights: number;
-  numGuests: number;
-  totalPrice: number;
-  guestId: number;
-  cabinId: number;
-  cabins: {
+export interface BookingType {
+  id?: number;
+  created_at?: string;
+  startDate?: string;
+  endDate?: string;
+  numNights?: number;
+  numGuests?: number;
+  totalPrice?: number;
+  guestId?: number;
+  cabinId?: number;
+  status?: string;
+  cabinPrice?: number;
+  isPaid?: boolean;
+  hasBreakfast?: boolean;
+  cabins?: {
     name: string;
     image: string;
-  }[]; // Object, not an array
-};
+  }[];
+}
 
 export async function getCabin(id: number) {
   const { data, error } = await supabase
