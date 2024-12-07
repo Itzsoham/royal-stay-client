@@ -1,6 +1,6 @@
 import ReservationList from "@/app/_components/ReservationList";
 import { auth } from "@/app/_lib/auth";
-import { BookingType, getBookings } from "@/app/_lib/data-service";
+import { BookingType, getBookings, getCabins } from "@/app/_lib/data-service";
 
 export const metadata = {
   title: "Your reservations",
@@ -8,10 +8,10 @@ export const metadata = {
 
 export default async function Page() {
   const session = await auth();
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const bookings: BookingType[] = await getBookings(
     session?.user?.guestId as number
   );
+  const cabins = await getCabins();
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default async function Page() {
           </a>
         </p>
       ) : (
-        <ReservationList bookings={bookings} />
+        <ReservationList bookings={bookings} cabins={cabins} />
       )}
     </div>
   );

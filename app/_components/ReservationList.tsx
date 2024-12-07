@@ -4,11 +4,14 @@ import React, { useOptimistic } from "react";
 import { BookingType } from "../_lib/data-service";
 import ReservationCard from "./ReservationCard";
 import { delteReservationAction } from "../_lib/actions";
+import { CabinType } from "./CabinCard";
 
 export default function ReservationList({
   bookings,
+  cabins,
 }: {
   bookings: BookingType[];
+  cabins: CabinType[];
 }) {
   const [optimisticBookings, optimisticDelete] = useOptimistic(
     bookings,
@@ -27,6 +30,7 @@ export default function ReservationList({
       {optimisticBookings.map((booking) => (
         <ReservationCard
           booking={booking}
+          cabins={cabins}
           key={booking.id}
           onDelete={handleDelte}
         />

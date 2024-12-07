@@ -4,18 +4,21 @@ import DeleteReservation from "./DeleteReservation";
 import { BookingType } from "../_lib/data-service";
 import Image from "next/image";
 import Link from "next/link";
+import { CabinType } from "./CabinCard";
 
 export const formatDistanceFromNow = (dateStr: string) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
   }).replace("about ", "");
 
-function ReservationCard({
+async function ReservationCard({
   booking,
   onDelete,
+  cabins,
 }: {
   booking: BookingType;
   onDelete: (bookingId: number) => void;
+  cabins: CabinType[];
 }) {
   const {
     id,
@@ -25,17 +28,19 @@ function ReservationCard({
     totalPrice,
     numGuests,
     created_at,
-    cabins,
+    cabinId,
   } = booking;
+
+  const cabin = cabins.find((cabin) => cabin.id === cabinId);
 
   return (
     <div className="flex border border-primary-800">
       <div className="relative h-32 aspect-square">
         <Image
-          src={cabins?.image || "/default-image.jpg"}
+          src={cabin?.image || "/default-image.jpg"}
           fill
           sizes="100%"
-          alt={`Cabin ${cabins?.name}`}
+          alt={`Cabin ${cabin?.name}`}
           className="object-cover border-r border-primary-800"
         />
       </div>
@@ -43,7 +48,7 @@ function ReservationCard({
       <div className="flex-grow px-6 py-3 flex flex-col">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold">
-            {numNights} nights in Cabin {cabins?.name}
+            {numNights} nights in Cabin {cabin?.name}
           </h3>
           {startDate && isPast(new Date(startDate)) ? (
             <span className="bg-yellow-800 text-yellow-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
