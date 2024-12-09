@@ -2,7 +2,7 @@ import { CabinType } from "@/app/_components/CabinCard";
 import Reservation from "@/app/_components/Reservation";
 import Spinner from "@/app/_components/Spinner";
 import Cabin from "@/app/_components/Cabin";
-import { getCabin, getCabins } from "@/app/_lib/data-service";
+import { getCabin } from "@/app/_lib/data-service";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 
