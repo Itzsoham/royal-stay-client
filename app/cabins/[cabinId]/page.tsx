@@ -29,19 +29,6 @@ export async function generateMetadata({
   }
 }
 
-// Generate paths for static rendering
-export async function generateStaticParams() {
-  try {
-    const cabins = await getCabins();
-    return cabins.map((cabin) => ({
-      params: { cabinId: cabin.id.toString() },
-    }));
-  } catch (error) {
-    console.error("Failed to generate static params:", error);
-    return [];
-  }
-}
-
 // Main Page Component
 export default async function Page({
   params,
