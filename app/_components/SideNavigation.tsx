@@ -8,6 +8,7 @@ import {
 import SignOutButton from "./SignOutButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import SettingsIcon from "./SettingsIcon";
 
 const navLinks = [
   {
@@ -46,6 +47,16 @@ function SideNavigation() {
             </Link>
           </li>
         ))}
+        <li>
+          <Link
+            className={`py-3 px-5 hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-4 font-semibold text-primary-200 `}
+            href="https://royalstay.vercel.app/"
+            target="_blank"
+          >
+            <SettingsIcon />
+            <span>Admin Panel</span>
+          </Link>
+        </li>
 
         <li className="mt-auto">
           <SignOutButton />
