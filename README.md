@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <h2 align="center">The Royal Stay Client</h2>
-    <h4 align="center">The royal stay is hotal management system with cool dashboard, bookings, cabins, users with authentication features</h4>
+    <h4 align="center">The royal stay client is main website for users who can visit the website and do reservations from it.</h4>
   <br />
     
   <div>
